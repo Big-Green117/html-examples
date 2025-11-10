@@ -1,0 +1,218 @@
+/* styles.css */
+
+/* An asterisk is the universal selector, as expected anything applied to it applies to every element */
+* 
+{
+   /* The color property can sets the elements text color, it accepts HEX, RGB, and HSL values as well as some predefined with keywords */
+   /* Hex */
+   color: #ff0000;
+
+   /* Hex with transperancy/alpha */
+   color: #ff000080;
+   
+   /* HSL */
+   color: hsl(120, 100%, 25%);
+
+   /* HSL with transperancy/alpha */
+   color: hsla(120, 100%, 25%, 0.3);
+
+   /* RGB */
+   color: rgb(0, 0, 255);
+
+   /* RGB with transperancy/alpha */
+   color: rgba(0, 0, 255, 0.3);
+
+   /* Only this one will display since it is listed last, comment out to see each individiually */
+   /* Keyword */
+   color: black; 
+
+   /* Background color changes the background behind the element, this example will not display because it is changed in the HTML file itself */
+   background-color: black;
+}
+
+/* A type/element selector selects every element of the given type */
+div
+{
+   /* This background color is still displayed despite the universal selector already specifying background color because it's a more specific reference */
+   background-color:aquamarine;
+
+   /* Creates an outline around every element on the page indicating width, style, then color */
+   outline: 2px solid black;
+
+   /* Padding is the space between the inside of the element and it's content */
+   padding: 2px;
+
+   /* Margin is the space between each element */
+   margin: 4px;
+
+   /* Border is the space between the padding and margin */
+   border: 2px;
+}
+
+/* A class selector chooses every element that was assigned to the class within the HTML file, classes can't start with a number */
+.class1
+{
+    background-color: red;
+}
+
+/* An id selector is similar to class but considered more specific and each element can only have 1 id and cannot be repeated on the same page */
+#id1
+{
+    background-color: blue;
+}
+
+/* This selects all class2 elements and all id2 elements regardless of if it only has one of the two */
+.class2,
+#id2
+{
+    background-color: black;
+}
+
+/* Altering text color to show a seperate class declaration */
+.class2
+{
+    color: bisque;
+}
+
+/* Altering text color to show a seperate class declaration */
+#id2
+{
+    color: cornflowerblue;
+}
+
+/* Chains the two class selectors so you can choose something more specific */
+.class1.class2
+{
+    background-color: orange;
+}
+
+/* Chains a class selector to an id selector to allow more specific selection */
+.class2#id2
+{
+    background-color: darkviolet;
+}
+
+/* Selects a class2 element as long as one of it's parent/ancestors is class1 */
+.class1 .class2
+{
+    background-color: darkred;
+}
+
+/* Selects a id1 element as long as one of it's parent/ancestors is class 2 and one of that has a class 1 parent */
+.class1 .class2 #id1
+{
+    background-color: deeppink;
+}
+
+/* Selects a id2 element as long as one of it's parent/ancestors is id1 and has a class 2 parent that has a class 1 parent */
+.class1 .class2 #id1 #id2
+{
+    background-color: coral;
+}
+
+/* Class that contains examples of text alteration in CSS */
+.textex
+{
+    /* Setting a font-family value is generally done with a list of the preferred choiced and fallbacks with the last fallback being a generic font family */
+    font-family: 'Times New Roman', Times, serif;
+
+    /* The font-size value allows you to alter the size of a font more accurately reflect your needs */
+    font-size: 20px;
+
+    /* The font-weight value can be used to make text bolder but does not tell screen readers it's important the way the html strong tag does */
+    /* You can set a nunber or just set to bold if you only want to match normal boldness */
+    font-weight: 700;
+
+    /* Text align aligns the text within the element to the specified location */
+    text-align: center;
+}
+
+/* Class that contains examples of image alteration in CSS */
+.imgex
+{
+    /* Height and width obviously alter the images height and width and setting one to auto ensures it scales properly */
+    height: auto;
+    width: 200px;
+}
+
+/* Class created to show how the parent passes down values */
+.parent
+{
+    text-align: center;
+}
+
+/* Class created to show how children inherit values */
+.child
+{
+    font-weight: 700;
+}
+
+/* Class that will hold the flexed div container */
+.flex-container
+{
+    /* Turns into a flexbox so that it can change dynamically based on defined rules */
+    display: flex;
+    
+    background-color: green;
+}
+
+/* Refers to all divs inside of the flex-container class */
+.flex-container div
+{
+    /* Shorthand value to set flex-grow and flex-shrink to 1 and flex-basis to 0 */
+    /* Flex-grow determines how fast an element will grow, if 1 is set to 1 and another to 2 the second will grow twice as fast  */
+    /* Flex-shrink is only relevant if the elements would be bigger than their container, if they are the value determines if they shrink evenly or not */
+    /* Flex-basis sets the initial size of the flex items, the default of 0 doesn't account for width while auto does */
+    flex: 1;
+    
+    background-color: black;
+    color: white;
+    height: 150px;
+    text-align: center;
+}
+
+/* Refers to the class two element with the flex-container ancestor and turns changes display type to flex and direction to column */
+.flex-container .two
+{
+    display: flex;
+
+    /* Has the flexbox operate as columns instead of rows */
+    flex-direction: column;
+}
+
+/* Refers to the divs that make up the columns in box 2 of the flex container */
+.flex-container .two div
+{
+    /* Flex auto is the same as Flex 1 except it sets flex-basis to auto */
+    flex: auto;
+    outline: 2px solid blueviolet;
+}
+
+/* Refers to the class three element with the flex-container ancestor and turns changes display type to flex and direction to column */
+.flex-container .three
+{
+    display: flex;
+
+    flex-direction: column;
+
+    /* Justify-content aligns items on the main axis, horizontal for row, vertical for column */
+    justify-content: space-between;
+
+    /* Align-items aligns items on the secondary axis, vertical for row, horizontal for column */
+    align-items: center;
+
+    /* Creates space between items in flex boxes */
+    gap: 1px;
+}
+
+/* Refers to the divs that make up the columns in box 3 of the flex container */
+.flex-container .three div
+{
+    /* Flex set to none because was previously inheriting the flex one from above */
+    flex: none;
+
+    outline: 2px solid blue;
+
+    height: 30px;
+    width: 80px;
+}
